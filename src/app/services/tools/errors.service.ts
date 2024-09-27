@@ -10,13 +10,19 @@ export class ErrorsService {
   public numeric: string;
   public betweenDate: string;
   public email: string;
+  public passwordMismatch: string;
+  public isValidDate: string;
 
+  // en esta parte agrega el passwordMismatch,isValidDate para que de esta forma muestre el mensjae de errr
   constructor() {
     this.generic = 'Favor de verificar el tipo de dato introducido no es válido';
     this.required = 'Campo requerido';
     this.numeric = 'Solo se aceptan valores numéricos';
-    this.betweenDate = 'Fecha no es válida';
+    this.betweenDate = 'La fecha debe estar entre el rango permitido';
     this.email = 'Favor de introducir un correo con el formato correcto';
+    this.passwordMismatch = 'Las contraseñas no coinciden';
+    this.isValidDate = 'La fecha es inválida';
+
    }
 
    between(min: any, max: any) {
@@ -30,5 +36,9 @@ export class ErrorsService {
   min(size: any) {
     return 'El campo no cumple la longitud aceptada: ' + size;
   }
+  dateBetween(min: Date, max: Date): string {
+    return `La fecha debe estar entre el ${min.toLocaleDateString()} y el ${max.toLocaleDateString()}.`;
+  }
+
 
 }

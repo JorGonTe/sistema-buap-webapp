@@ -12,6 +12,7 @@ export class ValidatorService {
     return (input != undefined && input != null && input != "" && input.toString().trim().length > 0);
   }
 
+
   max(input:any, size:any){
     return (input.length <= size);
   }
@@ -71,9 +72,20 @@ export class ValidatorService {
 
   }
 
+  //Para la validacion de fecha
+  isValidDate(date: any): boolean {
+    const parsedDate = new Date(date);
+    return !isNaN(parsedDate.getTime());
+  }
   words(input:any){
     let pat = new RegExp('^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$');
     console.log(pat.test(input), input);
     return pat.test(input);
   }
+
+  // para que verificacion de contraseña se crean una nueva validacion
+  passwordMismatch(password: any, confirmPassword: any): boolean {
+    return password === confirmPassword;
+  }
+
 }
