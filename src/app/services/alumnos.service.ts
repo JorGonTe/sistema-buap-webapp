@@ -126,6 +126,22 @@ export class AlumnosService {
   }
 
   //TODO: Agregar servicio para editar alumno
+  public obtenerListaAlumnos (): Observable <any>{
+    var token = this.facadeService.getSessionToken();
+    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+    return this.http.get<any>(`${environment.url_api}/lista-alumnos/`, {headers:headers});
+  }
+
+  //Obtener un solo usuario dependiendo su ID
+  public getAlumnoByID(idUser: Number){
+    return this.http.get<any>(`${environment.url_api}/alumnos/?id=${idUser}`,httpOptions);
+  }
+
+  public editarAlumno (data: any): Observable <any>{
+    var token = this.facadeService.getSessionToken();
+    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+    return this.http.put<any>(`${environment.url_api}/alumnos-edit/`, data, {headers:headers});
+  }
 
   //Eliminar Alumno
   public eliminarAlumno(idUser: number): Observable <any>{

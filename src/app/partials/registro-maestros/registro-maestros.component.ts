@@ -131,6 +131,18 @@ export class RegistroMaestrosComponent implements OnInit{
     );
   }
 
+  public soloLetras(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    // Permitir solo letras (mayúsculas y minúsculas) y espacio
+    if (
+      !(charCode >= 65 && charCode <= 90) &&  // Letras mayúsculas
+      !(charCode >= 97 && charCode <= 122) && // Letras minúsculas
+      charCode !== 32                         // Espacio
+    ) {
+      event.preventDefault();
+    }
+  }
+
   public checkboxChange(event:any){
     console.log("Evento: ", event);
     if(event.checked){

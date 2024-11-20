@@ -25,7 +25,7 @@ export class MaestrosScreenComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
+ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
@@ -76,7 +76,7 @@ export class MaestrosScreenComponent implements OnInit{
     //this.dataSourceIngresos.paginator = this.paginator;
   }
 
-  //Obtener alumnos
+  //Obtener maestros
   public obtenerMaestros(){
     this.maestrosService.obtenerListaMaestros().subscribe(
       (response)=>{
